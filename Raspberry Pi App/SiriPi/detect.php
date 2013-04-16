@@ -85,5 +85,30 @@ fclose($fh);
 exec("sudo ./youtube-dl -o youtube.mp3 -f 18 " . $linkresults);
 exec("sudo mplayer youtube.mp3");
 }
+//Questions Begin
+if (explode(" ",$results)[0] == "question"){
+$question = str_replace("question","",$results);
+$question = trim($question);
+include '/var/www/SiriPi/wolf/wa_wrapper/WolframAlphaEngine.php';
+$engine = new WolframAlphaEngine( 'Paste Your WalframAplpha APi Key here' );
+
+$resp = $engine->getResults($question);
+
+$pod = $resp->getPods();
+
+$pod = $pod[1];
+
+foreach($pod->getSubpods() as $subpod){
+  if($subpod->plaintext){
+    $plaintext = $subpod->plaintext;
+    break;
+  }
+}
+$answer = substr($plaintext, 0,strlen($plaintext)-3);
+echo $answer;
+}
+//Questions END
+
+
 ?>
 

@@ -1,0 +1,1 @@
+This is the uploads folder.  Make sure this is created before testing.
