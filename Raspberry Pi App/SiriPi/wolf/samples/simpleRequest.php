@@ -9,7 +9,7 @@ Search: <input type="text" name="q" value="<?php echo $_REQUEST['q']; ?>">&nbsp;
 <br><br>
 <hr>
 <?php
-  $appID = 'AJ3W5H-QPLP8JKER2';
+  $appID = 'Your Api Key here';
 
   // instantiate an engine object with your app id
   $engine = new WolframAlphaEngine( $appID );
